@@ -20,7 +20,7 @@ public class BaseClass {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "src\\test\\drivers\\chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "src\\test\\drivers\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
