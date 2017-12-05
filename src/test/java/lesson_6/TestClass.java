@@ -1,4 +1,4 @@
-package lessons_6;
+package lesson_6;
 
 
 import org.junit.Assert;
@@ -6,7 +6,6 @@ import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.By;
 
 import static org.hamcrest.CoreMatchers.containsString;
 

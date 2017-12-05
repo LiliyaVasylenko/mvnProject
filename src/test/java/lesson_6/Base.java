@@ -1,13 +1,9 @@
-package lessons_6;
+package lesson_6;
 
-import lesson_5.AdditionalClass;
-import lesson_5.LoginTest;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.concurrent.TimeUnit;
 
 
 public class Base {
