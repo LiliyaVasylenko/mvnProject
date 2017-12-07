@@ -55,12 +55,12 @@ public class CustomConditions {
     }
 
 
-    public static ExpectedCondition<Boolean> stalenessOfElement(By locator) {
+    public static ExpectedCondition<Boolean> stalenessOfElement(List<Element> someElement) {
         return new ExpectedCondition<Boolean>() {
             @Nullable
             @Override
             public Boolean apply(@Nullable WebDriver driver) {
-                if (driver.findElements(locator).isEmpty()) {
+                if (someElement.isEmpty()) {
                         return true;
                 }
                 return null;

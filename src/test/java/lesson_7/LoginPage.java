@@ -20,6 +20,15 @@ public class LoginPage extends BaseForObjects{
     @FindBy (xpath = "//*[@id=\"center_column\"]/ul//div[2]/h5/a")
     List<WebElement> listDresses;
 
+    @FindBy (xpath = "//*[@id='center_column']/div[1]/div")
+    WebElement image;
+
+    @FindBy (xpath = "//*[@id='header']//div[3]/div/a")
+    WebElement cartButton;
+
+    @FindBy (xpath = "//*[@id='block_top_menu']/ul/li[1]/a")
+     WebElement woman;
+
 
     public LoginPage enterUsername(String email) {
         $("//*[@id=\"header\"]/div[2]//div[1]/a").click();
