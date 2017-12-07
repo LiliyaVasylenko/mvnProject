@@ -18,8 +18,8 @@ public class AccountPage extends BaseForObjects {
     @FindBy (xpath = "//*[@id=\"search_query_top\"]")
     WebElement searchField;
 
-    @FindBy (xpath = "//*[@id=\"center_column\"]/ul//div[2]/h5/a")
-    List<WebElement> listDresses;
+//    @FindBy (xpath = "//*[@id=\"center_column\"]/ul//div[2]/h5/a")
+//    List<WebElement> listDresses;
 
 
     @FindBy(css = ".logout")

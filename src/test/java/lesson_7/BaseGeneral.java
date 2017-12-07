@@ -27,17 +27,24 @@ public abstract class BaseGeneral {
         return getDriver().findElements(locator);
     }
 
-    protected void assertThat(ExpectedCondition<List<WebElement>> condition) {
-        try {
-            new WebDriverWait(getDriver(),5).until(condition);
-        }
-        catch ( Exception e)
-        {
-            System.out.println(e.toString());
-        }
 
+
+//    protected <V> V assertThat(Function<? super WebDriver, V> contition) {
+//        try {
+//            return new WebDriverWait(getDriver(), 3).until(contition);
+//        }
+//        catch (Exception e)
+//        {
+//            System.out.println(e.getMessage());
+//        }
+//        return  null;
+//    }
+
+    protected <V> V assertThat(Function<? super WebDriver, V> contition) {
+            return new WebDriverWait(getDriver(), 5).until(contition);
     }
 }
+
 
 
 

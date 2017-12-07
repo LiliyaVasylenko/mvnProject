@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 
 public class LoginPage extends BaseForObjects{
 
@@ -14,6 +16,9 @@ public class LoginPage extends BaseForObjects{
 
     @FindBy(name = "SubmitLogin")
     WebElement signInBtn;
+
+    @FindBy (xpath = "//*[@id=\"center_column\"]/ul//div[2]/h5/a")
+    List<WebElement> listDresses;
 
 
     public LoginPage enterUsername(String email) {
