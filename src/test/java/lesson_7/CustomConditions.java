@@ -2,35 +2,17 @@ package lesson_7;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import javax.annotation.Nullable;
-import javax.xml.bind.Element;
 import java.util.List;
 
 public class CustomConditions {
 
-//    public static ExpectedCondition<List<WebElement>> listNthElementHasText(List<WebElement> list, int nthElement, String hasText) {
-//        return new ExpectedCondition<List<WebElement>>() {
-//            @Nullable
-//            @Override
-//            public List<WebElement> apply(@Nullable WebDriver driver) {
-//                // List<WebElement> list = driver.findElements(locator);
-//                if (list.get(nthElement).getText().contains(hasText)) {
-//                    return list;
-//                } else {
-//                    return null;
-//                }
-//            }
-//        };
-//    }
-
-
-    public static ExpectedCondition<List<WebElement>> listNthElementHasText(List<WebElement> list, int nthElement, String hasText) {
+    public static ExpectedCondition<List<WebElement>> listNthElementHasText(By locator , int nthElement, String hasText) {
         return new ExpectedCondition<List<WebElement>>() {
             @Nullable
             @Override
             public List<WebElement> apply(@Nullable WebDriver driver) {
+                List<WebElement> list = driver.findElements(locator);
                 try {
                     if (list.get(nthElement).getText().contains(hasText)) {
                         return list;
@@ -55,19 +37,20 @@ public class CustomConditions {
     }
 
 
-    public static ExpectedCondition<Boolean> stalenessOfElement(List<Element> someElement) {
+    public static ExpectedCondition<Boolean> stalenessOfElement(List<WebElement> someElement) {
         return new ExpectedCondition<Boolean>() {
             @Nullable
             @Override
             public Boolean apply(@Nullable WebDriver driver) {
-                if (someElement.isEmpty()) {
+                try {someElement.isEmpty();
                         return true;
                 }
-                return null;
+                catch (StaleElementReferenceException var3) {
+                    return null;
+                }
+
             }
         };
     }
-
-
 }
 
