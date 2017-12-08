@@ -21,6 +21,7 @@ public class TestClass extends BaseForTests {
     public void test001_UseCustomConditionForPageIsLoaded () throws Exception {
         assertThat(pageIsLoaded(BASE_URL, "My Store"));
     }
+
     @Test
     public void test002_UseCustomConditionForListNthElementHasText() throws Exception {
         $("//*[@id='block_top_menu']/ul/li[1]/a").click();
