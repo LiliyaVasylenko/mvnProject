@@ -24,20 +24,14 @@ public class TestClass extends BaseForTests {
 
     @Test
     public void test002_UseCustomConditionForListNthElementHasText() throws Exception {
-        $("//*[@id='block_top_menu']/ul/li[1]/a").click();
+
         assertThat(listNthElementHasText(loginPage.listDresses, 2, "Dress"));
     }
 
     @Test
     public void test003_UseCustomConditionForStalenessOfElement () throws Exception {
-        By image= By.xpath("//*[@id='center_column']/div[1]/div");
-        WebElement cartButton = $("//*[@id='header']//div[3]/div/a");
-        cartButton.click();
-
-        assertThat(stalenessOfElement(image));
-
-
-
+       loginPage.cartButton.click();
+       assertThat(stalenessOfElement(loginPage.image));
     }
 
 
