@@ -18,9 +18,19 @@ public class PaymentPage extends BaseObjects{
     @FindBy (xpath = "//*[@id='cart_navigation']/button/span")
     WebElement paymnentConfirmationBtn;
 
+    @FindBy (xpath = "//*[@id='center_column']/p/a")
+    WebElement backToHistoryBtn;
+
     public void payForProduct () {
         payByBankWire.click();
         paymnentConfirmationBtn.click();
+    }
+
+    public OrderHistoryObject navigateToOrderHistory () {
+        wait.until(ExpectedConditions.visibilityOf(backToHistoryBtn));
+        backToHistoryBtn.click();
+        return new OrderHistoryObject(driver);
+
     }
 }
 

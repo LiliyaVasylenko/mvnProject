@@ -14,7 +14,7 @@ public class TestClass extends BaseTests {
     AddressPage addressPage;
     ShippingPage shippingPage;
     PaymentPage paymentPage;
-
+    OrderHistoryObject orderHistoryObject;
 
 
 
@@ -44,7 +44,13 @@ public class TestClass extends BaseTests {
         Thread.sleep(3000);
         paymentPage.payForProduct();
 
+
         // проверка, что в истории заказов появился ИМЕННО ваш заказ
+        orderHistoryObject = paymentPage.navigateToOrderHistory();
+        orderHistoryObject.selectLastOrder();
+
+
+        //Assert.assertTrue(accountPage.orderCorrectness.contains());
 
 
 
