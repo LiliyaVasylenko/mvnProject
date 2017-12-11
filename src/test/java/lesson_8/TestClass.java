@@ -16,11 +16,9 @@ public class TestClass extends BaseTests {
     PaymentPage paymentPage;
     OrderHistoryObject orderHistoryObject;
 
-
-
     @Test
     public void shopping () throws Exception {
-        String necessaryProduct = "blouse";
+        String necessaryProduct = "Blouse";
         String email = "777@gmail.com";
         String password = "7777777";
 
@@ -41,7 +39,6 @@ public class TestClass extends BaseTests {
 
         //покупка
         paymentPage = shippingPage.switchToPayment();
-        Thread.sleep(3000);
         paymentPage.payForProduct();
 
 
@@ -49,8 +46,10 @@ public class TestClass extends BaseTests {
         orderHistoryObject = paymentPage.navigateToOrderHistory();
         orderHistoryObject.selectLastOrder();
 
+       Assert.assertTrue(orderHistoryObject.nameColorSize.getText().contains(necessaryProduct));
 
-        //Assert.assertTrue(accountPage.orderCorrectness.contains());
+
+
 
 
 

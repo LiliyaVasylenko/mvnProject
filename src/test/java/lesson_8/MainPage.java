@@ -28,9 +28,6 @@ public class MainPage extends BaseObjects{
     @FindBy (xpath = "//*[@id='center_column']//div[2]/a[1]/span")
     WebElement addToCardBtn;
 
-    @FindBy (xpath = "//*[@id='header']/div[3]/div/div/div[3]/div/a")
-    WebElement cart;
-
     @FindBy (xpath = "//*[@id='layer_cart']/div[1]/div[2]/div[4]/a/span")
     WebElement checkOutBtn;
 
@@ -42,11 +39,11 @@ public class MainPage extends BaseObjects{
 
     public void selectSomeProduct() throws Exception {
         builder.moveToElement(product).click(addToCardBtn).perform();
-
         Action mouseoverAndClick = builder.build();
         mouseoverAndClick.perform();
-
     }
+
+
 
     public SummaryPage navigateToCart () throws Exception {
         wait.until(ExpectedConditions.visibilityOf(checkOutBtn));
