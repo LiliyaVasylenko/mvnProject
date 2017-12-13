@@ -1,30 +1,29 @@
 package lesson_8;
 
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.awt.*;
 
 
-public class SummaryPage extends BaseObjects{
+public class ShippingPage extends BaseForPages {
 
-    public SummaryPage(WebDriver driver) {
+    public ShippingPage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy (xpath = "//*[@id='cart_title']/span")
-    WebElement cartTitle;
-
-    @FindBy (xpath = "//*[@id='center_column']/p[2]/a[1]/span")
+    @FindBy(xpath = "//*[@id='form']//button/span")
     WebElement proccedToCheckoutBtn;
 
+    @FindBy (id = "cgv")
+    WebElement agreement;
 
-    public SignInPage switchToLogin () {
+
+    public PaymentPage switchToPayment () {
+        LOG.info("Switch to the 5-step (Payment) of order");
         wait.until(ExpectedConditions.visibilityOf(proccedToCheckoutBtn));
+        agreement.click();
         proccedToCheckoutBtn.click();
-        return  new SignInPage(driver);
+        return new PaymentPage(driver);
     }
-
 }

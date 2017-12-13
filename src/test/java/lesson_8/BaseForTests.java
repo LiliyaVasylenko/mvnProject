@@ -3,12 +3,14 @@ package lesson_8;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.concurrent.TimeUnit;
 
 
-public class BaseTests  extends BaseTestsPages {
+public class BaseForTests extends BaseForTestsAndPages {
     static  WebDriver driver;
     protected static final String BASE_URL = "http://automationpractice.com";
 

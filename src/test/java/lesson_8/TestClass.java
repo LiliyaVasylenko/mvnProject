@@ -1,20 +1,21 @@
 package lesson_8;
 
 import org.junit.Assert;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import static org.hamcrest.CoreMatchers.containsString;
 
 
-
-public class TestClass extends BaseTests {
+public class TestClass extends BaseForTests {
     MainPage mainPage = new MainPage(driver);
     SummaryPage summaryPage;
     SignInPage signInPage;
     AddressPage addressPage;
     ShippingPage shippingPage;
     PaymentPage paymentPage;
-    OrderHistoryObject orderHistoryObject;
+    OrderHistoryPage orderHistoryObject;
 
     @Test
     public void shopping () throws Exception {
@@ -23,41 +24,37 @@ public class TestClass extends BaseTests {
         String password = "7777777";
 
         // поиск товара
-        mainPage.searchSomeProduct(necessaryProduct);
+        mainPage.searchProduct(necessaryProduct);
         Assert.assertTrue(mainPage.messageSearschResult.getText().contains("been found"));
-        Assert.assertTrue(mainPage.product.isEnabled());
+        Assert.assertTrue(mainPage.searchedProduct.isEnabled());
 
         // добавление его в корзину
-        mainPage.selectSomeProduct();
-        summaryPage = mainPage.navigateToCart();
-        Assert.assertTrue(summaryPage.cartTitle.getText().contains("Your shopping cart contains: 1 Product"));
+        mainPage.addProductToCart();
+        summaryPage = mainPage.switchToCart();
 
         // оформление заказа
-         signInPage = summaryPage.switchToLogin();
-         addressPage = signInPage.login(email, password);
-         shippingPage = addressPage.switchToShipping();
+         signInPage = summaryPage.switchToSignIn();
+
+        signInPage.login(email, password);
+        addressPage = signInPage.switchToAddress();
+        shippingPage = addressPage.switchToShipping();
 
         //покупка
         paymentPage = shippingPage.switchToPayment();
         paymentPage.payForProduct();
 
+        String  orderReference = $(By.cssSelector("div.box")).getText().substring(216, 225);
 
-        // проверка, что в истории заказов появился ИМЕННО ваш заказ
-        orderHistoryObject = paymentPage.navigateToOrderHistory();
+       // проверка, что в истории заказов появился ИМЕННО ваш заказ
+        orderHistoryObject = paymentPage.switchToOrderHistory();
         orderHistoryObject.selectLastOrder();
 
        Assert.assertTrue(orderHistoryObject.nameColorSize.getText().contains(necessaryProduct));
-
-
-
-
+       Assert.assertTrue(orderHistoryObject.lastOrderfromHistory.getText().contains(orderReference));
+       Assert.assertThat("Check order reference", orderHistoryObject.lastOrderfromHistory.getText(), containsString(orderReference));
 
 
 
     }
-
-
-
-
 
 }

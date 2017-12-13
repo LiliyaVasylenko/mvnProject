@@ -8,9 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Liliia.Vasylenko on 30.11.2017.
- */
+
 public class BaseClass {
 
     protected static final String BASE_URL = "http://automationpractice.com";
@@ -20,7 +18,6 @@ public class BaseClass {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        //System.setProperty("webdriver.chrome.driver", "src\\test\\drivers\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);

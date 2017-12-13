@@ -1,14 +1,11 @@
 package lesson_8;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-public class SignInPage extends BaseObjects{
+public class SignInPage extends BaseForPages {
 
     public SignInPage(WebDriver driver) {
         super(driver);
@@ -21,16 +18,19 @@ public class SignInPage extends BaseObjects{
     WebElement passwordField;
 
     @FindBy (name = "SubmitLogin")
-    WebElement signInField;
+    WebElement signInBtn;
 
 
-
-    public AddressPage login (String userName, String passw) {
-
+    public void login (String userName, String passw) {
+        LOG.info("Login");
         emailField.sendKeys(userName);
         passwordField.sendKeys(passw);
-        signInField.click();
-       return new AddressPage(driver);
+    }
+
+    public AddressPage switchToAddress () {
+        LOG.info("Switch to part Address");
+        signInBtn.click();
+        return new AddressPage(driver);
     }
 
 

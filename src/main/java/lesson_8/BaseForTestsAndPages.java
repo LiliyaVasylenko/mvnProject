@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public abstract  class BaseTestsPages {
+public abstract  class BaseForTestsAndPages {
     public abstract WebDriver getDriver ();
 
     public WebElement $(String xpath) {
