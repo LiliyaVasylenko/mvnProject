@@ -30,6 +30,9 @@ public class TestClass extends BaseForTests {
     public void test003_UseCustomConditionForStalenessOfElement () throws Exception {
        loginPage.cartButton.click();
        assertThat(stalenessOfElement(loginPage.image));
+
+
+
     }
 }
 
