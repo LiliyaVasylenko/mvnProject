@@ -33,6 +33,9 @@ public class BaseForPages extends BaseForTestsAndPages {
     @FindBy (xpath = "//*[@id='center_column']//span[contains(text(),'Proceed to checkout')]")
     WebElement proccedToCheckOutBtn;
 
+    @FindBy (xpath = "//*[@class='page-heading']")
+    WebElement title;
+
 
     static {
         if(System.getProperty("report.path") == null){

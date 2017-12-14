@@ -31,16 +31,22 @@ public class TestClass extends BaseForTests {
         // добавление его в корзину
         mainPage.addProductToCart();
         summaryPage = mainPage.switchToCart();
+        Assert.assertTrue(mainPage.title.getText().contains("SHOPPING-CART SUMMARY"));
 
         // оформление заказа
          signInPage = summaryPage.switchToSignIn();
+        Assert.assertTrue(signInPage.title.getText().contains("AUTHENTICATION"));
 
         signInPage.login(email, password);
         addressPage = signInPage.switchToAddress();
+        Assert.assertTrue(signInPage.title.getText().contains("ADDRESSES"));
+
         shippingPage = addressPage.switchToShipping();
+        Assert.assertTrue(signInPage.title.getText().contains("SHIPPING"));
 
         //покупка
         paymentPage = shippingPage.switchToPayment();
+        Assert.assertTrue(signInPage.title.getText().contains("PLEASE CHOOSE YOUR PAYMENT METHOD"));
         paymentPage.payForProduct();
 
         String  orderReference = $(By.cssSelector("div.box")).getText().substring(216, 225);
